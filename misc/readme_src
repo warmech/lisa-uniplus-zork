@@ -1,0 +1,50 @@
+Welcome to Zork! Sort of...
+
+This collection of files will allow you to compile Mainframe Zork from its C
+source files for UniPlus (System V) Unix on the Apple Lisa. These files were 
+derived from FORTRAN77 source code via the f2c conversion utility in the 
+distant past (the F77 source itself a port of the origianl MDL code written 
+on a PDP-10 at MIT in the 1970s, F77 being a much more portable language that 
+allowed Zork to eventually be built on a PDP-11).
+
+Minimal changes have been made to allow this code to be compiled successfully;
+UniPlus on the Lisa is a bit more forgiving than Xenix on the Lisa; its C
+compiler, for instance, can handle constants (whereas Xenix's cannot) and
+terminal support is a bit easier to work with.
+
+This set of two (2) disks contains the following files:
+
+FILES:
+
+	Disk 1: SOURCE FILES
+	
+		readme      - this file
+		setup.sh    - the setup script
+		zork_c.tar  - the C source files tarball
+		
+	Disk 2: ADDITIONAL DATA
+	
+		zork_d.tar  - the game database tarball
+		zork_h.tar  - the C header files tarball
+		zork_m.tar  - the makefile tarball
+
+SETUP:
+
+	Begin by copying the setup.sh file to the hard disk. This is done with:
+	
+	cp setup.sh /
+	
+	Once copied, run the setup script with:
+	
+	./setup.sh
+	
+	and follow the instructions to swap out disks when prompted.
+	
+	Once complete, cd into /tmp/zork and use the following commands to 
+	build Zork from source:
+	
+	make
+	make install
+	
+	This will built the zork binary and then install it to /usr/games and 
+	then install its database file to /usr/games/lib.

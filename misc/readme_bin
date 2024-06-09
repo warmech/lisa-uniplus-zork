@@ -1,0 +1,23 @@
+Welcome to Zork!
+
+This disk contains all that you need to get Zork up and running on your Apple 
+Lisa running UniPlus (System V) Unix.
+
+This disk contains the following files:
+
+FILES:	
+		readme      - this file
+		install.sh  - the installation script
+		zork        - the C source files tarball
+		dtextc.dat  - the game database file
+
+SETUP:
+
+	Run the installer script with:
+	
+	./setup.sh
+	
+	This will install the Zork executable to /usr/games and the game's data
+	file to /usr/games/lib. Once copied, Zork can be run with:
+	
+	/usr/games/zork
