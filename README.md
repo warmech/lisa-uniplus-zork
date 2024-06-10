@@ -13,29 +13,36 @@ The codebase has 33 C source files, three (3) header files, a single database fi
 
 ### Tar Files
 The /tar directory contains four files that can be extracted on the Lisa: 
--	Zork_c.tar – the C source files for Zork
--	Zork_d.tar - the game's database file
--	Zork_h.tar - the C header files for Zork
--	Zork_m.tar - the makefile for compiling Zork
+-	zork_c.tar – the C source files for Zork
+-	zork_d.tar - the game's database file
+-	zork_h.tar - the C header files for Zork
+-	zork_m.tar - the makefile for compiling Zork
 
 ### Binaries
 The /bin directory contains the Zork executable and it’s required database file, dtextc.dat. Not much can be done with these outside of UniPlus, but they are included here for research purposes.
 
 ### Disk Images
 The /dsk directory contains three disk images:
-- zork_source_files.image
-- zork_additional_data.image
-- zork_bin_install.image
+- zork_source_files.image - the C source files for Zork, along with a readme and build environment setup script
+- zork_additional_data.image - the C header files for Zork, along with the game's data file and makefile
+- zork_bin_install.image - the game executable and data file, along with a readme and installer script
 
-The Source Files image contains three files, the C source code tar file, a setup script to automate the process of getting the data ready to compile, and a readme. Copy the setup.sh file to the hard disk and run with ./setup.sh; the script will handle extracting the source files and managing floppy disks without you having to do anything but swap disks when prompted.
+The Source Files image contains three files, the C source code tar file, a setup script to automate the process of getting the data ready to compile, and a readme. Copy the setup.sh file to the hard disk and run with ```./setup.sh```; the script will handle extracting the source files and managing floppy disks without you having to do anything but swap disks when prompted.
+
 The Additional Data disk contains tar files that contain the C headers that Zork uses, the game data file, and the makefile. While you can manually manipulate these files, the setup.sh script will take care of that for you.
-Lastly, the Binary Install disk contains the Zork executable and game data file, as well as a readme and installer script that copies the first two files into their correct locations on the hard disk.
+
+Lastly, the Binary Install disk contains the Zork executable and game data file, as well as a readme and installer script that copies the first two files into their correct locations on the hard disk. Run ```./install.sh``` on the disk to install the game.
+
 ## Building
-To build from the source files, either copy the necessary files across a serial connection to the Lisa (uudecode will be required to decode dtextc.dat from its text form if this is done) or copy the setup script off the source files disk to the hard disk and run it using ./setup.sh. The prior method is beyond the scope of this document, so the latter method is highly recommended if you are looking to build Zork from scratch.
-Once the source files (all *.c and *.h files), the game data file, and the makefile have all been put in pace (/tmp/zork is using the setup script), cd into the directory they were copied to and run make to start the compilation process. You will eventually receive a warning when compiling dsub.c that a particular line is unreachable; this warning can be ignored.
+To build from the source files, either copy the necessary files across a serial connection to the Lisa (uudecode will be required to decode dtextc.dat from its text form if this is done) or copy the setup script off the source files disk to the hard disk and run it using ```./setup.sh```. The prior method is beyond the scope of this document, so the latter method is highly recommended if you are looking to build Zork from scratch.
+
+Once the source files (all *.c and *.h files), the game data file, and the makefile have all been put in place (/tmp/zork is used by the setup script), cd into the directory they were copied to and run ```make``` to start the compilation process. You will eventually receive a warning when compiling dsub.c that a particular line is unreachable; this warning can be ignored.
+
 ## Installing from Built Source
-Once the process completes, there should now be a “zork” file present in the source code directory. The installation process is completed by running make install to copy the resultant executable to /usr/games and the game data file to /usr/games/lib. The game can then be run directly by running /usr/games/zork from anywhere on the system.
+Once the process completes, there should now be a “zork” file present in the source code directory. The installation process is completed by running ```make install``` to copy the resultant executable to /usr/games and the game data file to /usr/games/lib. The game can then be run directly by running ```/usr/games/zork``` from anywhere on the system.
+
 ## Installing from Disk Image
-To install a pre-built version of the game, insert the Binary Install floppy disk/disk image (if using a FloppyEmu) and run the install script with ./install.sh and wait for the copy process to conclude. The game can then be run directly by running /usr/games/zork from anywhere on the system.
+To install a pre-built version of the game, insert the Binary Install floppy disk/disk image (if using a FloppyEmu) and run the install script with ```./install.sh``` and wait for the copy process to conclude. The game can then be run directly by running ```/usr/games/zork``` from anywhere on the system.
+
 ## Playing
-To play the game, run /usr/games/zork from anywhere on the system and the Zork program will launch. This version has been compiled with the debugger flag set; to run the debugger when playing the game, enter the command gdt and hit Enter. To exit the debugger, type EX and hit Enter.
+To play the game, run ```/usr/games/zork``` from anywhere on the system and the Zork program will launch. This version has been compiled with the debugger flag set; to run the debugger when playing the game, enter the command ```gdt``` and hit Enter. To exit the debugger, type ```EX``` and hit Enter.
